@@ -1,6 +1,6 @@
 import { TaskStatus } from "../enums/taskstatus.enum";
 
-export abstract class Task {
+export abstract class ITask {
     private static _totalTasks: number = 0;
     private readonly _ID: number;
     private _title: string;
@@ -9,8 +9,8 @@ export abstract class Task {
     private _status: TaskStatus;
 
     constructor(){
-        this._ID = Task._totalTasks;
-        Task._totalTasks ++;
+        this._ID = ITask._totalTasks;
+        ITask._totalTasks ++;
     }
 
     get ID(): number {

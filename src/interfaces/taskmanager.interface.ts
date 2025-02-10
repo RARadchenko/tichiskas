@@ -1,8 +1,9 @@
 import { TaskStatus } from "../enums/taskstatus.enum";
-import { Task } from "./task.interface";
+import { ITask } from "./task.interface";
 
-abstract class ITaskManager<T> {
+export abstract class ITaskManager<T> {
     private static _instance: any;
+    protected _taskStack: ITask[] = [];
   
     protected constructor() {
         if ((this.constructor as any)._instance) {
@@ -18,15 +19,15 @@ abstract class ITaskManager<T> {
         return (this as any)._instance;
     }
 
-    abstract AddTask(task: Task): void;
+    abstract AddTask(task: ITask): void;
 
-    abstract EditTask(taskID: number): void;
+    abstract EditTask(taskID: number, status: TaskStatus): void;
 
     abstract DeleteTask(taskID: number): void;
 
-    abstract FindTask(taskID: number): Task;
+    abstract FindTask(taskID: number): ITask;
 
-    abstract FindTask(taskTitle: string): Task;
+    abstract FindTask(taskTitle: string): ITask;
 
-    abstract FindTask(taskStatus: TaskStatus): Task;
+    abstract FindTask(taskStatus: TaskStatus): ITask;
 }
