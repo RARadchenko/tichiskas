@@ -9,12 +9,13 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                    "outputPath": "dist/tichiskas",
-                    "index": "src/index.html",
-                    "main": "src/main.ts",
-                    "polyfills": ["zone.js"],
-                    "tsConfig": "tsconfig.json",
-                    "aot": true
+                        "outputPath": "dist/tichiskas",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": ["zone.js"],
+                        "tsConfig": "tsconfig.json",
+                        "aot": true,
+                        "styles": ["src/styles.scss"]
                     }
                 },
                 "serve": {
@@ -25,5 +26,8 @@
                 }
             }
         }
+    },
+    "cli": {
+      "analytics": "891ac858-ff56-42bf-a79f-36a360b4e665"
     }
 }

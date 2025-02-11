@@ -1,0 +1,13 @@
+html, body, p, h1, a {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+html, body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    height: 100%;
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    display: flex;
+    flex-flow: column;
+}
