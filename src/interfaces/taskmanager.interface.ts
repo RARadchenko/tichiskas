@@ -1,5 +1,6 @@
 import { TaskStatus } from "../enums/taskstatus.enum";
 import { ITask } from "./task.interface";
+import { ITaskLoader } from "./taskloader.interface";
 
 /**
  * Abstract class for managing tasks.
@@ -12,7 +13,7 @@ export abstract class ITaskManager<T> {
     private static _instance: any;
     
     // Stack of tasks managed by the task manager
-    protected _taskStack: ITask[] = [];
+    protected _taskStack: ITaskLoader[] = [];
 
     /**
      * Protected constructor to enforce singleton pattern.
@@ -40,9 +41,9 @@ export abstract class ITaskManager<T> {
 
     /**
      * Adds a new task to the task manager.
-     * @param {ITask} task - The task to add.
+     * @param {ITaskLoader} task - The task to add.
      */
-    abstract AddTask(task: ITask): void;
+    abstract AddTask(task: ITaskLoader): void;
 
     /**
      * Edits the status of a task based on its ID.

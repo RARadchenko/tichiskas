@@ -1,5 +1,6 @@
 import { TaskStatus } from '../enums/taskstatus.enum';
 import { ITask } from '../interfaces/task.interface';
+import { ITaskLoader } from '../interfaces/taskloader.interface';
 import { ITaskManager } from '../interfaces/taskmanager.interface';
 
 export class TaskManager extends ITaskManager<TaskManager> {
@@ -7,21 +8,21 @@ export class TaskManager extends ITaskManager<TaskManager> {
         super();
     }
 
-    AddTask(task: ITask): void {
+    AddTask(task: ITaskLoader): void {
         this._taskStack.push(task);
     }
 
     EditTask(taskID: number, status: TaskStatus): void {
-        let taskIndex = this._taskStack.findIndex((t) => t.ID == taskID);
+        let taskIndex = this._taskStack.findIndex((t) => t.task.ID == taskID);
         if (taskIndex >= 0) {
-            this._taskStack[taskIndex].status = status;
+            this._taskStack[taskIndex].task.status = status;
             return;
         }
         throw Error(`Index of task id${taskID} was not found.`);
     }
     
     DeleteTask(taskID: number): void {
-        let taskIndex = this._taskStack.findIndex((t) => t.ID == taskID);
+        let taskIndex = this._taskStack.findIndex((t) => t.task.ID == taskID);
         if (taskIndex >= 0) {
             this._taskStack.splice(taskIndex, 1);
             return;
@@ -33,23 +34,23 @@ export class TaskManager extends ITaskManager<TaskManager> {
     FindTask(taskTitle: string): ITask;
     FindTask(taskStatus: TaskStatus): ITask;
 
-    FindTask(arg: number | string | TaskStatus) {
+    FindTask(arg: number | string | TaskStatus): ITask {
         if (typeof arg === "number") {
-            let task = this._taskStack.find((t) => t.ID == arg);
+            let task = this._taskStack.find((t) => t.task.ID == arg);
             if (task) {
-                return task;
+                return task.task;
             }
             throw Error(`Index of task id${arg} was not found.`);
         } else if (typeof arg === "string") {
-            let task = this._taskStack.find((t) => t.title == arg);
+            let task = this._taskStack.find((t) => t.task.title == arg);
             if (task) {
-                return task;
+                return task.task;
             }
             throw Error(`Task by title "${arg}" was not found.`);
         } else {
-            let task = this._taskStack.find((t) => t.status == arg);
+            let task = this._taskStack.find((t) => t.task.status == arg);
             if (task) {
-                return task;
+                return task.task;
             }
             throw Error(`Task by status "${arg}" was not found.`);
         }
