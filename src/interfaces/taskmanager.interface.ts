@@ -14,6 +14,9 @@ export abstract class ITaskManager<T> {
     
     // Stack of tasks managed by the task manager
     protected _taskStack: ITaskLoader[] = [];
+    get taskStack() {
+        return this._taskStack;
+    }
 
     /**
      * Protected constructor to enforce singleton pattern.
