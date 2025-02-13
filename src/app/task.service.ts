@@ -1,14 +1,11 @@
-import { Component } from "@angular/core";
-import { TaskManager } from "../classes/taskmanager.class";
-import { ITaskLoader } from "../interfaces/taskloader.interface";
-import { ITask } from "../interfaces/task.interface";
-import { TaskStatus } from "../enums/taskstatus.enum";
+import { Injectable } from "@angular/core";
+import { TaskManager } from "../classes/taskmanager.class"; 
+import { ITaskLoader } from "../interfaces/taskloader.interface"; 
+import { ITask } from "../interfaces/task.interface"; 
+import { TaskStatus } from "../enums/taskstatus.enum"; 
 
-@Component({
-    selector: 'task-comp',
-    standalone: true
-})
-export class TaskComponent {
+@Injectable()
+export class TaskService {
     constructor(public taskManager: TaskManager) {}
 
     addTask(task: ITaskLoader) {
