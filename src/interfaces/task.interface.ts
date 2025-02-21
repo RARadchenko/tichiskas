@@ -13,24 +13,28 @@ export abstract class ITask {
     private readonly _ID: number;
     
     // Task title
-    private _title: string;
+    private _title: string = "";
     
     // Task description
-    private _dedescription: string;
+    private _dedescription: string = "";
     
     // Deadline represented as a timestamp
-    private _deadline: number;
+    private _deadline: number = 0;
     
     // Status of the task
-    private _status: TaskStatus;
+    private _status: TaskStatus = 0;
 
     /**
      * Constructor for the ITask class.
      * Initializes the task with a unique ID and increments the total task count.
      */
-    constructor() {
+    constructor(title: string, dedescription: string, deadline: number, status: TaskStatus) {
         this._ID = ITask._totalTasks;
         ITask._totalTasks++;
+        this._title = title;
+        this._dedescription = dedescription;
+        this._deadline = deadline;
+        this._status = status;
     }
 
     // Getter for the task ID

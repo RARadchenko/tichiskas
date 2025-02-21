@@ -42,6 +42,10 @@ export abstract class ITaskManager<T> {
         return (this as any)._instance;
     }
 
+    static resetInstance<T>(this: new () => T): void {
+        (this as any)._instance = null;
+    }
+
     /**
      * Adds a new task to the task manager.
      * @param {ITaskLoader} task - The task to add.
@@ -80,5 +84,5 @@ export abstract class ITaskManager<T> {
      * @param {TaskStatus} taskStatus - The status of the task to find.
      * @returns {ITask} - The found task.
      */
-    abstract FindTask(taskStatus: TaskStatus): ITask;
+    abstract FindTaskByStatus(taskStatus: TaskStatus): ITask;
 }
