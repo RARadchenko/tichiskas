@@ -3,3 +3,4 @@ package-lock.json
 dist
 .angular
 coverage
+secret-key.asc
