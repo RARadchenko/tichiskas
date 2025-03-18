@@ -1,10 +1,41 @@
+@use '../base' as *;
+
 :host {
     height: 100%;
     width: 100%;
     align-content: center;
+    background: $base-bcg-bottom;
 
-    h1 {
-        font-weight: 400;
+    .block {
+        height: calc(100% - 60px);
+        width: 100%;
+        display: flex;
+    }
+
+    .hero-l {
+        flex: 1 0 auto;
+        min-width: 500px;
+        height: 100%;
         text-align: center;
+        align-content: center;
+        background-color: $base-bcg-top;
+        margin-left: 9px;
+        border-radius: 3px;
+
+        h1, p {
+            color: gray;
+            font-weight: 100;
+        }
+    }
+
+    .hero-r {
+        margin-left: 9px;
+        margin-right: 9px;
+        flex: 0 0 auto;
+        height: 100%;
+        img {
+            height: 100%;
+            border-radius: 3px;
+        }
     }
 }
