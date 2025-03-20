@@ -1,0 +1,67 @@
+@use '../base' as *;
+
+:host {
+    .block {
+        height: calc(100% - 60px);
+        width: 100%;
+        display: flex;
+    }
+
+    .hero-l {
+        flex: 1 0 auto;
+        min-width: 500px;
+        height: 100%;
+        text-align: center;
+        align-content: center;
+        background-color: $base-bcg-top;
+        margin-left: 9px;
+        border-radius: 3px;
+
+        span, p {
+            color: gray;
+            font-weight: 100;
+        }
+
+        .title {
+            font-size: 30px;
+        }
+
+        .t-color {
+            color: $base-text-color
+        }
+
+        .ready-b {
+            width: calc((500px * 50) / 100);
+            height: 40px;
+            margin-top: 10px;
+            border-radius: 3px;
+            font-size: 16px;
+            border: 0;
+            background: #282e38ff;
+            transition: .1s linear all;
+            cursor: pointer;
+            color: $base-text-color;
+            font-weight: 100;
+        }
+
+        .ready-b:hover {
+            background: $base-text-color;
+            color: black;
+        }
+
+        .ready-b:active {
+            transform: translateY(2px);
+        }
+    }
+
+    .hero-r {
+        margin-left: 9px;
+        margin-right: 9px;
+        flex: 0 0 auto;
+        height: 100%;
+        img {
+            height: 100%;
+            border-radius: 3px;
+        }
+    }
+}

@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { SignService } from "./sign.service";
 
 @Component({
     selector: 'app-header',
@@ -7,5 +8,7 @@ import { Component } from "@angular/core";
     styleUrl: './header.component.scss'
 })
 export class AppHeader {
+    constructor(public signService: SignService) {}
+
     title = 'tichiskas';
 }

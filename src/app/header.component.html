@@ -2,6 +2,8 @@
     {{title}}
 </div>
 <div class="button-panel">
-    <button class="sign-up">Sign up</button>
-    <button class="sign-in">Sign in</button>
+    @if (!signService.isUSerLoggedToSystem) {
+        <button class="sign-up" (click)="signService.sign(true)">Sign up</button>
+        <button class="sign-in" (click)="signService.sign(true)">Sign in</button>
+    }
 </div>
