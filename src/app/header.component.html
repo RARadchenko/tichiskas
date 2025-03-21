@@ -1,4 +1,4 @@
-<div class="logo">
+<div class="logo" [routerLink]="['']">
     {{title}}
 </div>
 <div class="button-panel">
@@ -34,7 +34,7 @@
                         </tr>
                     </table>
                     <div class="btn-table">
-                        <button [routerLink]="['/up']">Settings</button>
+                        <button [routerLink]="['/u']">Settings</button>
                         <button (click)="signOut()">Sign out</button>
                     </div>
                 </div>

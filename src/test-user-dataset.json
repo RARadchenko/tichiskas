@@ -26,27 +26,11 @@
     },
     {
       "id": "4",
-      "login": "testuser11",
+      "login": "krutojBarbarian11",
       "name": "superSigma",
       "email": "pupupu@gmail.com",
       "phone": "+380000000000",
       "password": "krutoj16"
-    },
-    {
-      "id": "5",
-      "login": "testuser111",
-      "name": "boobieballs",
-      "email": "",
-      "phone": "",
-      "password": ""
-    },
-    {
-      "id": "6",
-      "login": "ruslanRadchenko",
-      "name": "Rusik33cm",
-      "email": "",
-      "phone": "",
-      "password": ""
     }
   ]
 }

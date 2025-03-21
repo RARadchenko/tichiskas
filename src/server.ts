@@ -92,7 +92,10 @@ app.put('/user/update', jsonParser, (req, res) => {
     const data = getData(userTestDataSet);
     const userList: User[] = data.userList;
 
-    const userIndex = userList.findIndex(user => user.id == req.body.user.id);
+    const userIndex = userList.findIndex(user => {
+        return user.id == req.body.user.id;
+    });
+
     if (userIndex !== -1) {
         userList[userIndex] = {
             ...userList[userIndex],

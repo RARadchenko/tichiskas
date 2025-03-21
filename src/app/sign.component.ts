@@ -53,7 +53,7 @@ export class SignPopupComponent {
                             this.router.navigate(["/r"]);       
                         }
                     },
-                    error: (err: any) => console.log(err)
+                    error: (err: any) => this.alert = "User not found"
                 });
         }
     }

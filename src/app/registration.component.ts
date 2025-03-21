@@ -44,6 +44,7 @@ export class RegistrationComponent {
         user.name = this.username;
         user.email = this.email;
         user.phone = this.phone;
+        user.password = this.password1;
         this.http.addUser(user).
             subscribe({
                 next: (data: any) => {
