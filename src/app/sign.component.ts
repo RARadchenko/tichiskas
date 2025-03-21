@@ -3,6 +3,7 @@ import { SignService } from "./sign.service";
 import { FormsModule } from "@angular/forms";
 import { HttpService } from "./http.service";
 import { UserService } from "./user.service";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "app-sign",
@@ -12,7 +13,7 @@ import { UserService } from "./user.service";
     styleUrl: './sign.component.scss'
 })
 export class SignPopupComponent {
-    constructor(public signService: SignService, public http: HttpService, public user: UserService) {}
+    constructor(public signService: SignService, public http: HttpService, public user: UserService, private router: Router) {}
 
     stopPropagation(event: Event) {
         event.stopPropagation();
@@ -33,16 +34,19 @@ export class SignPopupComponent {
                 subscribe({
                     next: (data: any) => {
                         userExist = data;
-                        console.log(data)
                         if (userExist) {
                             this.http.getUser(login, password).
                                 subscribe({
                                     next: (data: any) => {
                                         this.user.userData = data;
-                                        console.log(this.user.userData?.name);
+                                        this.signService.sign(false);
+                                        this.signService.isUserLoggedToSystem = true;
                                     },
                                     error: (err: any) => this.signService.alert = err.error?.error || 'Unknown error'
                                 });
+                        }
+                        else {
+                            this.router.navigate(["/r"]);       
                         }
                     },
                     error: (err: any) => console.log(err)

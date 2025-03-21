@@ -2,8 +2,41 @@
     {{title}}
 </div>
 <div class="button-panel">
-    @if (!signService.isUSerLoggedToSystem) {
-        <button class="sign-up" (click)="signService.sign(true)">Sign up</button>
-        <button class="sign-in" (click)="signService.sign(true)">Sign in</button>
+    @if (!signService.isUserLoggedToSystem) {
+        <button (click)="signService.sign(true)">Sign up</button>
+        <button (click)="signService.sign(true)">Sign in</button>
+    }
+    @else {
+        <div class="menu_container"
+             (mouseenter)="showUserMenu = true"
+             (mouseleave)="showUserMenu = false">
+            <div class="trigger">
+                <button>(●'◡'●)</button>
+            </div>
+            <div class="dropdown_menu" *ngIf="showUserMenu">
+                <table>
+                    <tr>
+                        <th>Username: </th>
+                        <th>{{user.userData!.name}}</th>
+                    </tr>
+                    <tr>
+                        <th>Login: </th>
+                        <th>{{user.userData!.login}}</th>
+                    </tr>
+                    <tr>
+                        <th>Email: </th>
+                        <th>{{user.userData!.email === "" ? "-" : user.userData!.email}}</th>
+                    </tr>
+                    <tr>
+                        <th>Phone: </th>
+                        <th>{{user.userData!.phone === "" ? "-" : user.userData!.phone}}</th>
+                    </tr>
+                </table>
+                <div class="btn-table">
+                    <button [routerLink]="['/up']">Settings</button>
+                    <button (click)="signOut()">Sign out</button>
+                </div>
+            </div>
+        </div>
     }
 </div>

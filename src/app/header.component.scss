@@ -41,5 +41,44 @@
         button:active {
             transform: translateY(2px);
         }
+
+        .menu_container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .trigger {
+            cursor: pointer;
+        }
+        
+        .dropdown_menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: $base-bcg-top;
+            border: 1px solid $base-bcg-bottom;
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            overflow: hidden;
+            z-index: 1000;
+            padding: 15px 30px;
+
+            table {
+                width: 100%;
+                tr {
+                    th {
+                        text-align: left;
+                        color: gray;
+                        font-weight: 100;
+                    }
+                }
+            }
+
+            .btn-table {
+                width: 100%;
+                text-align: center;
+                display: flex;
+            }
+        }
     } 
 }
