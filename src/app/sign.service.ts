@@ -2,14 +2,13 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 export class SignService {
-    signToSystem: boolean = false;
-    isUserLoggedToSystem: boolean = false;
+    private _signToSystem: boolean = false;
 
-    login: string = '';
-    password: string = '';
-    alert: string = '';
+    signGet() {
+        return this._signToSystem;
+    }
 
     sign(isSign: boolean) {
-        this.signToSystem = isSign;
+        this._signToSystem = isSign;
     }
 }

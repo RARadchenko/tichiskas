@@ -1,4 +1,4 @@
-@if (signService.signToSystem) {
+@if (signService.signGet()) {
     <div class="dimmer" (click)="signService.sign(false)">
         <div class="login" (click)="stopPropagation($event)">
             <div class="b-pad">
@@ -7,11 +7,11 @@
             <p class="title">Enter your login and password</p>
             <div class="input-sec">
                 <p>Login:</p>
-                <input [(ngModel)]="signService.login" type="text" maxlength="70" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off">
+                <input [(ngModel)]="login" type="text" maxlength="70" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off">
             </div>
             <div class="input-sec">    
                 <p>Password:</p>
-                <input [(ngModel)]="signService.password" type="password" maxlength="70" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" (keypress)="onKeyPress($event)">
+                <input [(ngModel)]="password" type="password" maxlength="70" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" (keypress)="onKeyPress($event)">
             </div>
             <div class="input-sec">
                 <button (click)="validateAndSend()">Continue</button>

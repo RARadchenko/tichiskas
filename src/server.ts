@@ -21,7 +21,6 @@ const jsonParser = express.json();
 const userTestDataSet = 'test-user-dataset.json';
 
 const getData = (dataName: string) => {
-    console.log(__dirname)
     const rawData = fs.readFileSync(path.join(__dirname, dataName), 'utf8');
     return JSON.parse(rawData);
 }
@@ -39,7 +38,6 @@ app.use(
 
 // Data endpoint to check if the user exists
 app.get('/user/exist', jsonParser, (req, res) => {
-    console.log(getData(userTestDataSet));
     const data: User[] = getData(userTestDataSet).userList;
     if (data.find(user => user.email === req.query['data']) || 
         data.find(user => user.login === req.query['data']) || 

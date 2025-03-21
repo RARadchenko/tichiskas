@@ -15,6 +15,10 @@ import { Router } from "@angular/router";
 export class SignPopupComponent {
     constructor(public signService: SignService, public http: HttpService, public user: UserService, private router: Router) {}
 
+    login: string = '';
+    password: string = '';
+    alert: string = '';
+
     stopPropagation(event: Event) {
         event.stopPropagation();
     }
@@ -26,26 +30,26 @@ export class SignPopupComponent {
     }
 
     validateAndSend() {
-        let login = this.signService.login;
-        let password = this.signService.password;
-        if (this.signService.login.length > 6 && this.signService.password.length > 6) {
+        let login = this.login;
+        let password = this.password;
+        if (this.login.length > 6 && this.password.length > 6) {
             let userExist: boolean;
             this.http.doesUserExist(login).
                 subscribe({
                     next: (data: any) => {
-                        userExist = data;
+                        userExist = data["exist"];
                         if (userExist) {
                             this.http.getUser(login, password).
                                 subscribe({
                                     next: (data: any) => {
                                         this.user.userData = data;
                                         this.signService.sign(false);
-                                        this.signService.isUserLoggedToSystem = true;
                                     },
-                                    error: (err: any) => this.signService.alert = err.error?.error || 'Unknown error'
+                                    error: (err: any) => this.alert = err.error?.error || 'Unknown error'
                                 });
                         }
                         else {
+                            this.signService.sign(false);
                             this.router.navigate(["/r"]);       
                         }
                     },

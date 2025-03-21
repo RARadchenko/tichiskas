@@ -1,28 +1,52 @@
 {
-    "userList": [
-        {
-            "id": "1",
-            "login": "testuser1",
-            "name": "John Doe",
-            "email": "",
-            "phone": "",
-            "password": "testpassword1"
-        },
-        {
-            "id": "2",
-            "login": "testuser2",
-            "name": "John Wick",
-            "email": "testuser2@test.user",
-            "phone": "+1234567890",
-            "password": "testpassword2"
-        },
-        {
-            "id": 3,
-            "login": "testuser3",
-            "name": "Very Cool John Pork",
-            "email": "cooltestuser3@test.user",
-            "phone": "+4777666777",
-            "password": "testpassword3"
-        }
-    ]
+  "userList": [
+    {
+      "id": "1",
+      "login": "testuser1",
+      "name": "John Doe",
+      "email": "",
+      "phone": "",
+      "password": "testpassword1"
+    },
+    {
+      "id": "2",
+      "login": "testuser2",
+      "name": "John Wick",
+      "email": "testuser2@test.user",
+      "phone": "+1234567890",
+      "password": "testpassword2"
+    },
+    {
+      "id": 3,
+      "login": "testuser3",
+      "name": "Very Cool John Pork",
+      "email": "cooltestuser3@test.user",
+      "phone": "+4777666777",
+      "password": "testpassword3"
+    },
+    {
+      "id": "4",
+      "login": "testuser11",
+      "name": "superSigma",
+      "email": "pupupu@gmail.com",
+      "phone": "+380000000000",
+      "password": "krutoj16"
+    },
+    {
+      "id": "5",
+      "login": "testuser111",
+      "name": "boobieballs",
+      "email": "",
+      "phone": "",
+      "password": ""
+    },
+    {
+      "id": "6",
+      "login": "ruslanRadchenko",
+      "name": "Rusik33cm",
+      "email": "",
+      "phone": "",
+      "password": ""
+    }
+  ]
 }

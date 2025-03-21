@@ -2,7 +2,7 @@
     {{title}}
 </div>
 <div class="button-panel">
-    @if (!signService.isUserLoggedToSystem) {
+    @if (!user.isUserLoggedIn) {
         <button (click)="signService.sign(true)">Sign up</button>
         <button (click)="signService.sign(true)">Sign in</button>
     }
@@ -13,30 +13,32 @@
             <div class="trigger">
                 <button>(●'◡'●)</button>
             </div>
-            <div class="dropdown_menu" *ngIf="showUserMenu">
-                <table>
-                    <tr>
-                        <th>Username: </th>
-                        <th>{{user.userData!.name}}</th>
-                    </tr>
-                    <tr>
-                        <th>Login: </th>
-                        <th>{{user.userData!.login}}</th>
-                    </tr>
-                    <tr>
-                        <th>Email: </th>
-                        <th>{{user.userData!.email === "" ? "-" : user.userData!.email}}</th>
-                    </tr>
-                    <tr>
-                        <th>Phone: </th>
-                        <th>{{user.userData!.phone === "" ? "-" : user.userData!.phone}}</th>
-                    </tr>
-                </table>
-                <div class="btn-table">
-                    <button [routerLink]="['/up']">Settings</button>
-                    <button (click)="signOut()">Sign out</button>
+            @if (showUserMenu) {
+                <div class="dropdown_menu">
+                    <table>
+                        <tr>
+                            <th>Username: </th>
+                            <th>{{user.userData!.name}}</th>
+                        </tr>
+                        <tr>
+                            <th>Login: </th>
+                            <th>{{user.userData!.login}}</th>
+                        </tr>
+                        <tr>
+                            <th>Email: </th>
+                            <th>{{user.userData!.email === "" ? "-" : user.userData!.email}}</th>
+                        </tr>
+                        <tr>
+                            <th>Phone: </th>
+                            <th>{{user.userData!.phone === "" ? "-" : user.userData!.phone}}</th>
+                        </tr>
+                    </table>
+                    <div class="btn-table">
+                        <button [routerLink]="['/up']">Settings</button>
+                        <button (click)="signOut()">Sign out</button>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     }
 </div>
