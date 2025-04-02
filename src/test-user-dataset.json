@@ -31,6 +31,14 @@
       "email": "pupupu@gmail.com",
       "phone": "+380000000000",
       "password": "krutoj16"
+    },
+    {
+      "id": "5",
+      "login": "testeracc",
+      "name": "testeracc",
+      "email": "testeracc@gmail.com",
+      "phone": "+380000000000",
+      "password": "123456a"
     }
   ]
 }
