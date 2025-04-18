@@ -1,14 +1,14 @@
 import { Injectable } from "@angular/core";
 import { TaskManager } from "../classes/taskmanager.class"; 
-import { ITaskLoader } from "../interfaces/taskloader.interface"; 
-import { ITask } from "../interfaces/task.interface"; 
+import { ATaskLoader } from "../abstracts/taskloader.aclass"; 
+import { ATask } from "../abstracts/task.aclass"; 
 import { TaskStatus } from "../enums/taskstatus.enum"; 
 
 @Injectable()
 export class TaskService {
     constructor(public taskManager: TaskManager) {}
 
-    addTask(task: ITaskLoader) {
+    addTask(task: ATaskLoader) {
         this.taskManager.AddTask(task);
     }
 
@@ -20,15 +20,15 @@ export class TaskService {
         this.taskManager.DeleteTask(taskID);
     }
 
-    findTaskByID(taskID: number): ITask {
+    findTaskByID(taskID: number): ATask {
         return this.taskManager.FindTask(taskID);
     }
 
-    findTaskByTitle(taskTitle: string): ITask {
+    findTaskByTitle(taskTitle: string): ATask {
         return this.taskManager.FindTask(taskTitle);
     }
 
-    findTaskByStatus(taskStatus: TaskStatus): ITask {
+    findTaskByStatus(taskStatus: TaskStatus): ATask {
         return this.taskManager.FindTask(taskStatus);
     }
 }

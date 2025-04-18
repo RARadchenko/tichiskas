@@ -1,11 +1,12 @@
 import { TaskStatus } from "../enums/taskstatus.enum";
+import { ITask } from "../interfaces/task.inteface";
 
 /**
  * Abstract class representing a task.
  * This class serves as a blueprint for creating tasks with an ID, title, description, deadline, and status.
  * It also tracks the total number of tasks created.
  */
-export abstract class ITask {
+export abstract class ATask implements ITask {
     // Static variable to keep track of the total number of tasks created
     private static _totalTasks: number = 0;
     
@@ -29,8 +30,8 @@ export abstract class ITask {
      * Initializes the task with a unique ID and increments the total task count.
      */
     constructor(title: string, dedescription: string, deadline: number, status: TaskStatus) {
-        this._ID = ITask._totalTasks;
-        ITask._totalTasks++;
+        this._ID = ATask._totalTasks;
+        ATask._totalTasks++;
         this._title = title;
         this._dedescription = dedescription;
         this._deadline = deadline;

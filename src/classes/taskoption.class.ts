@@ -1,7 +1,7 @@
-import { ITaskOption } from "../interfaces/taskoption.interface";
+import { ATaskOption } from "../abstracts/taskoption.aclass";
 
 /**
  * Класс TaskOption, реализующий интерфейс ITaskOption.
  * Используется для работы с параметрами задачи.
  */
-export class TaskOption extends ITaskOption {}
+export class TaskOption extends ATaskOption {}

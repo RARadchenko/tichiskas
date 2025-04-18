@@ -1,14 +1,14 @@
 import { TaskStatus } from '../enums/taskstatus.enum';
-import { ITask } from '../interfaces/task.interface';
-import { ITaskLoader } from '../interfaces/taskloader.interface';
-import { ITaskManager } from '../interfaces/taskmanager.interface';
+import { ITask } from '../interfaces/task.inteface';
+import { ATaskLoader } from '../abstracts/taskloader.aclass';
+import { ATaskManager } from '../abstracts/taskmanager.aclass';
 
-export class TaskManager extends ITaskManager<TaskManager> {
+export class TaskManager extends ATaskManager<TaskManager> {
     constructor() {
         super();
     }
 
-    AddTask(task: ITaskLoader): void {
+    AddTask(task: ATaskLoader): void {
         this._taskStack.push(task);
     }
 
