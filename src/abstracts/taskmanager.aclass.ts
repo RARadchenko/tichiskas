@@ -2,7 +2,6 @@ import { TaskStatus } from "../enums/taskstatus.enum";
 import { ITask } from "../interfaces/task.inteface";
 import { ITaskLoader } from "../interfaces/taskloader.interface";
 import { ITaskManager } from "../interfaces/taskmanager.interface";
-import { ATaskLoader } from "./taskloader.aclass";
 
 /**
  * Abstract class for managing tasks.
@@ -15,8 +14,8 @@ export abstract class ATaskManager<T> implements ITaskManager {
     private static _instance: any;
     
     // Stack of tasks managed by the task manager
-    protected _taskStack: ATaskLoader[] = [];
-    get taskStack(): ATaskLoader[] {
+    protected _taskStack: ITaskLoader[] = [];
+    get taskStack(): ITaskLoader[] {
         return this._taskStack;
     }
 
@@ -52,7 +51,7 @@ export abstract class ATaskManager<T> implements ITaskManager {
      * Adds a new task to the task manager.
      * @param {ATaskLoader} task - The task to add.
      */
-    abstract AddTask(task: ATaskLoader): void;
+    abstract AddTask(task: ITaskLoader): void;
 
     /**
      * Edits the status of a task based on its ID.
@@ -72,19 +71,19 @@ export abstract class ATaskManager<T> implements ITaskManager {
      * @param {number} taskID - The ID of the task to find.
      * @returns {ATask} - The found task.
      */
-    abstract FindTask(taskID: number): ATask;
+    abstract FindTask(taskID: number): ITask;
 
     /**
      * Finds a task by its title.
      * @param {string} taskTitle - The title of the task to find.
      * @returns {ATask} - The found task.
      */
-    abstract FindTask(taskTitle: string): ATask;
+    abstract FindTask(taskTitle: string): ITask;
 
     /**
      * Finds a task by its status.
      * @param {TaskStatus} taskStatus - The status of the task to find.
      * @returns {ATask} - The found task.
      */
-    abstract FindTaskByStatus(taskStatus: TaskStatus): ATask;
+    abstract FindTaskByStatus(taskStatus: TaskStatus): ITask;
 }
