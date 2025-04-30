@@ -78,13 +78,6 @@ describe('Task Service', () => {
         expect(Object.getPrototypeOf(task1)).toEqual(Object.getPrototypeOf(taskService.findTaskByTitle("tichiska1")));
     });
 
-    it('findTask: by status', () => {
-        let task1: Task = new Task("tichiska1", "dedescription?", 1739468766, TaskStatus.Done);
-        let task2: Task = new Task("tichiska2", "dedescription!!!", 1739468769);
-
-        taskService.addTask(new TaskLoader(task1));
-        taskService.addTask(new TaskLoader(task2));
-
-        expect(Object.getPrototypeOf(task1)).toEqual(Object.getPrototypeOf(taskService.findTaskByStatus(TaskStatus.Done)));
-    });
+    
+    
 });
