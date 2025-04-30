@@ -1,5 +1,6 @@
 import { ITask } from "../interfaces/task.inteface";
 import { ITaskOption } from "../interfaces/taskoption.interface";
+import { ATask } from "./task.aclass";
 
 /**
  * Abstract class responsible for loading tasks with optional configurations.
@@ -10,13 +11,13 @@ export abstract class ATaskLoader {
      * @param {ITask} _task - The task to be loaded.
      * @param {ITaskOption | null} _taskOption - Optional task configurations (e.g., priority).
      */
-    constructor(private _task: ITask, private _taskOption: ITaskOption | null = null) {}
+    constructor(private _task: ATask, private _taskOption: ITaskOption | null = null) {}
 
     /**
      * Gets the task associated with this loader.
      * @returns {ITask} - The loaded task.
      */
-    get task(): ITask {
+    get task(): ATask {
         return this._task;
     }
 
