@@ -1,7 +1,8 @@
 import { TaskStatus } from "../enums/taskstatus.enum";
-import { ITask } from "../interfaces/task.inteface";
+import { ATask } from "./task.aclass";
 import { ITaskLoader } from "../interfaces/taskloader.interface";
 import { ITaskManager } from "../interfaces/taskmanager.interface";
+import { ATaskLoader } from "./taskloader.aclass";
 
 /**
  * Abstract class for managing tasks.
@@ -12,10 +13,10 @@ import { ITaskManager } from "../interfaces/taskmanager.interface";
 export abstract class ATaskManager<T> implements ITaskManager {
     // Singleton instance of the task manager
     private static _instance: any;
-    
+
     // Stack of tasks managed by the task manager
-    protected _taskStack: ITaskLoader[] = [];
-    get taskStack(): ITaskLoader[] {
+    protected _taskStack: ATaskLoader[] = [];
+    get taskStack(): ATaskLoader[] {
         return this._taskStack;
     }
 
@@ -23,11 +24,12 @@ export abstract class ATaskManager<T> implements ITaskManager {
      * Protected constructor to enforce singleton pattern.
      * Throws an error if an instance already exists.
      */
-    protected constructor() {
+    protected constructor(protected taskLoaderFactory: () => ITaskLoader[]) {
         if ((this.constructor as any)._instance) {
             throw new Error("Instance already exists! Use getInstance() instead.");
         }
         (this.constructor as any)._instance = this;
+        this._taskStack = taskLoaderFactory();
     }
 
     /**
@@ -36,9 +38,9 @@ export abstract class ATaskManager<T> implements ITaskManager {
      *
      * @returns {T} - The singleton instance.
      */
-    static getInstance<T>(this: new () => T): T {
+    static getInstance<T>(this: new (taskLoaderFactory: () => ITaskLoader[]) => T, taskLoaderFactory: () => ITaskLoader[]): T {
         if (!(this as any)._instance) {
-            (this as any)._instance = new this();
+            (this as any)._instance = new this(taskLoaderFactory);
         }
         return (this as any)._instance;
     }
@@ -49,7 +51,7 @@ export abstract class ATaskManager<T> implements ITaskManager {
 
     /**
      * Adds a new task to the task manager.
-     * @param {ATaskLoader} task - The task to add.
+     * @param {ITaskLoader} task - The task to add.
      */
     abstract AddTask(task: ITaskLoader): void;
 
@@ -69,21 +71,21 @@ export abstract class ATaskManager<T> implements ITaskManager {
     /**
      * Finds a task by its ID.
      * @param {number} taskID - The ID of the task to find.
-     * @returns {ATask} - The found task.
+     * @returns {ITask} - The found task.
      */
-    abstract FindTask(taskID: number): ITask;
+    abstract FindTask(taskID: number): ATask;
 
     /**
      * Finds a task by its title.
      * @param {string} taskTitle - The title of the task to find.
-     * @returns {ATask} - The found task.
+     * @returns {ITask} - The found task.
      */
-    abstract FindTask(taskTitle: string): ITask;
+    abstract FindTask(taskTitle: string): ATask;
 
     /**
      * Finds a task by its status.
      * @param {TaskStatus} taskStatus - The status of the task to find.
-     * @returns {ATask} - The found task.
+     * @returns {ITask} - The found task.
      */
-    abstract FindTaskByStatus(taskStatus: TaskStatus): ITask;
+    abstract FindTaskByStatus(taskStatus: TaskStatus): ATask;
 }
