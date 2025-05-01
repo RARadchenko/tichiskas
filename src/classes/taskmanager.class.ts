@@ -1,5 +1,5 @@
 import { TaskStatus } from '../enums/taskstatus.enum';
-import { ATask } from '../abstracts/task.aclass'; 
+import { ITask } from '../interfaces/task.inteface';
 import { ATaskLoader } from '../abstracts/taskloader.aclass';
 import { ATaskManager } from '../abstracts/taskmanager.aclass';
 import { ITaskLoader } from '../interfaces/taskloader.interface';
@@ -31,10 +31,10 @@ export class TaskManager extends ATaskManager<TaskManager> {
         throw Error(`Index of task id${taskID} was not found.`);
     }
     
-    FindTask(taskID: number): ATask;
-    FindTask(taskTitle: string): ATask;
+    FindTask(taskID: number): ITask;
+    FindTask(taskTitle: string): ITask;
 
-    FindTask(arg: number | string): ATask {
+    FindTask(arg: number | string): ITask {
         if (typeof arg === "number") {
             let task = this._taskStack.find((t) => t.task.ID == arg);
             if (task) {
@@ -50,7 +50,7 @@ export class TaskManager extends ATaskManager<TaskManager> {
         }
     }
 
-    FindTaskByStatus(arg: TaskStatus): ATask {
+    FindTaskByStatus(arg: TaskStatus): ITask {
         let task = this._taskStack.find((t) => t.task.status == arg);
         if (task) {
             return task.task;
