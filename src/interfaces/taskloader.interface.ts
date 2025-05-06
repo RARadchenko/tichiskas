@@ -1,5 +1,4 @@
-import { ITaskOption } from "./taskoption.interface"; 
-import { ITask } from "./task.inteface";
+import { ITaskOption } from "./taskoption.interface";
 import { ATask } from "../abstracts/task.aclass";
 
 export interface ITaskLoader {
